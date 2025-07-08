@@ -1,78 +1,128 @@
 # Archive Producer Batch Renamer
 
-A modern web application for renaming music production project folders with consistent naming conventions.
+A desktop application for batch renaming music production folders with consistent naming conventions.
 
 ## Features
 
-- 🎵 **Smart Pattern Recognition** - Automatically extracts song names, artist names, and version information
-- 📁 **Batch Processing** - Rename multiple folders at once
-- 👀 **Preview Mode** - See changes before applying them
-- 🎨 **Custom Templates** - Define your own naming patterns
-- 🔧 **Custom Mappings** - Set default values for missing information
-- 🛡️ **Safe Operations** - Preview all changes before execution
+- 🎵 Batch rename music production folders
+- 📝 Custom naming templates with placeholders
+- 👀 Preview changes before applying
+- 🎨 Modern, intuitive interface
+- 💻 Cross-platform desktop application
 
-## Setup
+## Installation
 
-### 1. Create Virtual Environment
+### For End Users (Producers/Engineers)
 
-```bash
-# Create virtual environment
-python -m venv venv
+1. **Download the latest release** for your platform:
 
-# Activate virtual environment
-# On macOS/Linux:
-source venv/bin/activate
-# On Windows:
-venv\Scripts\activate
-```
+   - macOS: `.dmg` file
+   - Windows: `.exe` installer
+   - Linux: `.AppImage` file
 
-### 2. Install Dependencies
+2. **Install and run** the application
 
-```bash
-pip install -r requirements.txt
-```
+### For Developers
 
-### 3. Run the Application
+1. **Clone the repository**
 
-```bash
-streamlit run app.py
-```
+   ```bash
+   git clone <repository-url>
+   cd archive-producer-batch-renamer
+   ```
 
-The application will open in your default web browser at `http://localhost:8501`
+2. **Install Python dependencies**
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. **Install Node.js dependencies**
+
+   ```bash
+   npm install
+   ```
+
+4. **Run in development mode**
+   ```bash
+   npm run dev
+   ```
+
+## Building for Distribution
+
+### Prerequisites
+
+- Python 3.8+
+- Node.js 16+
+- npm
+
+### Build Steps
+
+1. **Install dependencies**
+
+   ```bash
+   pip install -r requirements.txt
+   npm install
+   ```
+
+2. **Build the desktop app**
+
+   ```bash
+   npm run build
+   ```
+
+3. **Find the built app** in the `dist/` folder
 
 ## Usage
 
-1. **Enter Directory Path** - Specify the folder containing your music projects
-2. **Customize Template** - Use placeholders like `{song_name}`, `{artist_name}`, `{version}`, `{version_number}`
-3. **Set Defaults** - Provide default values for missing information
-4. **Preview Changes** - Review what will be renamed before applying
-5. **Apply Renames** - Execute the batch rename operation
+1. **Launch the application**
+2. **Enter your music projects directory path**
+3. **Customize the naming template** using placeholders:
+   - `{song_name}` - Extracted song name
+   - `{artist_name}` - Artist name
+   - `{version}` - Version type (prod, mix, master, etc.)
+   - `{version_number}` - Version number
+4. **Set custom defaults** for missing information
+5. **Preview the changes** before applying
+6. **Click 'Apply Renames'** to execute
 
-## Example Templates
+## Template Examples
 
-- `{song_name}_{artist_name}_{version}_{version_number}` → `deadwing_porcupine_tree_prod_6`
-- `{artist_name}_{song_name}_v{version_number}` → `porcupine_tree_deadwing_v6`
-- `{song_name}_{version_number}` → `deadwing_6`
-
-## Supported Patterns
-
-The app recognizes common music production naming patterns:
-
-- `prod`, `mix`, `master`, `final`
-- Version numbers (`v1`, `v2`, `final6`, etc.)
-- Artist names and song titles
-
-## Safety Features
-
-- Preview all changes before execution
-- Error handling for failed renames
-- No changes made until you click "Apply Renames"
-- Detailed feedback on success/failure
+- **Basic**: `{song_name}_{artist_name}_{version}_{version_number}`
+- **Simple**: `{song_name}_{artist_name}_v{version_number}`
+- **Artist First**: `{artist_name}_{song_name}_{version}`
+- **Version Only**: `{song_name}_{version_number}`
 
 ## Development
 
-To deactivate the virtual environment when done:
+### Project Structure
+
+```
+├── app.py              # Main Streamlit application
+├── main.js             # Electron main process
+├── package.json        # Node.js dependencies and build config
+├── requirements.txt    # Python dependencies
+└── .streamlit/         # Streamlit configuration
+```
+
+### Running Tests
 
 ```bash
-deactivate
+# Add tests when implemented
 ```
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Test thoroughly
+5. Submit a pull request
+
+## License
+
+[Add your license here]
+
+## Support
+
+For issues and questions, please open an issue on GitHub.

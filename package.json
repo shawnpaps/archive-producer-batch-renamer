@@ -1,0 +1,79 @@
+{
+	"name": "archive-producer-batch-renamer",
+	"version": "1.0.0",
+	"description": "Desktop app for batch renaming music production folders",
+	"main": "main.js",
+	"scripts": {
+		"start": "electron .",
+		"build": "electron-builder",
+		"dev": "concurrently \"streamlit run app.py\" \"wait-on http://localhost:8501 && electron .\"",
+		"pack": "electron-builder --dir",
+		"dist": "electron-builder"
+	},
+	"build": {
+		"appId": "com.archiveproducer.batchrenamer",
+		"productName": "Archive Producer Batch Renamer",
+		"directories": {
+			"output": "dist"
+		},
+		"files": [
+			"**/*",
+			"!node_modules/**/*",
+			"!dist/**/*",
+			"!.git/**/*",
+			"!*.md",
+			"!setup.*",
+			"!start.sh",
+			"!create_*.py"
+		],
+		"extraResources": [
+			{
+				"from": "venv",
+				"to": "venv",
+				"filter": [
+					"**/*",
+					"!**/__pycache__/**/*",
+					"!**/*.pyc",
+					"!**/*.pyo"
+				]
+			}
+		],
+		"mac": {
+			"category": "public.app-category.music",
+			"target": [
+				{
+					"target": "dmg",
+					"arch": [
+						"x64",
+						"arm64"
+					]
+				}
+			],
+			"icon": "icon.icns",
+			"identity": null
+		},
+		"win": {
+			"target": "nsis",
+			"icon": "icon.ico"
+		},
+		"linux": {
+			"target": "AppImage",
+			"icon": "icon.png"
+		},
+		"dmg": {
+			"title": "Archive Producer Batch Renamer",
+			"icon": "icon.icns",
+			"background": "background.png",
+			"window": {
+				"width": 540,
+				"height": 380
+			}
+		}
+	},
+	"devDependencies": {
+		"concurrently": "^8.2.2",
+		"electron": "^27.0.0",
+		"electron-builder": "^24.6.4",
+		"wait-on": "^7.0.1"
+	}
+}

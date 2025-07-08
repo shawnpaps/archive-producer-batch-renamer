@@ -7,6 +7,11 @@ textColor = "#262730"
 [server]
 enableCORS = false
 enableXsrfProtection = false
+headless = true
+port = 8501
 
 [browser]
-gatherUsageStats = false 
+gatherUsageStats = false
+
+[global]
+developmentMode = false 
